@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="icon" type="image/png" sizes="16x16" href="img/start-menu.png"/>
+	<!-- <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png"/> -->
+	<link rel="stylesheet" href="style.css"/>
+	<script src="https://kit.fontawesome.com/63535dd4e0.js"></script>
+	<script defer src="script.js"></script>
+
+	<title>Windows 95</title>
+	<meta name="description" content="Windows 95 - it's just a toy"/>
+	<meta name="keywords" content=""/>
+</head>
+<body onload="init()">
+
+	<div id="start-screen" onclick="startWindowsSession()">
+		<img src="img/logo.png"/>
+	</div>
+
+
+
+	<div id="desktop" onmousemove="tryMoveElement(event)" onclick="uncheckStartMenu()">
+
+		<div id="start-menu">
+			<div class="start-item">
+				<img src="img/start-menu/programs.png"/>
+				Programs
+				<div class="start-submenu" id="programs-submenu">
+					<div class="programs-item">
+						Accessories
+						<div class="start-submenu" id="accessories-submenu">
+							<div class="menu-item">Games</div>
+							<div class="menu-item">Internet Tools</div>
+							<div class="menu-item">Multimedia</div>
+							<div class="menu-item">System Tools</div>
+						</div>
+					</div>
+					<div class="programs-item">Startup</div>
+					<div class="programs-item">MS-DOS Prompt</div>
+					<div class="programs-item">Windows Explorer</div>
+				</div>
+			</div>
+			<div class="start-item">
+				<img src="img/start-menu/documents.png"/>
+				Documents
+			</div>
+			<div class="start-item">
+				<img src="img/start-menu/settings.png"/>
+				Settings
+			</div>
+			<div class="start-item">
+				<img src="img/start-menu/find.png"/>
+				Find
+			</div>
+			<div class="start-item">
+				<img src="img/start-menu/help.png"/>
+				Help
+			</div>
+			<div class="start-item">
+				<img src="img/start-menu/run.png"/>
+				Run...
+			</div>
+			<hr>
+			<div class="start-item">
+				<img src="img/start-menu/shut-down.png"/>
+				Shut down...
+			</div>
+		</div>
+
+		<div class="window" id="window-exit-windows">
+			<div class="title-bar">
+				<div class="options-button">&ndash;</div>
+				<div class="title">Exit Windows</div>
+			</div>
+			<div class="window-content" style="padding: 10px;">
+				<p>
+					<i class="fas fa-info-circle" style="color: #00a; font-size: xx-large;vertical-align: sub;"></i> 
+					This will end your Windows session
+				</p>
+				<button id="button-ok" onclick="exitWindowsSession()">OK</button>
+				<button onclick="closeWindow(parentElement.parentElement)">Cancel</button>
+			</div>
+		</div> <!-- .WINDOW #WINDOW-EXIT-WINDOWS -->
+
+		<div class="window-with-menu-bar" id="window-program-manager" onmousedown="clickOnWindow(this)">
+			<div class="title-bar">
+				<div class="options-button" onclick="showWindowExitWindows()">&ndash;</div>
+				<div class="title"
+					onmousedown="setMouseDown(this, event)"
+					onmouseup="setMouseUp(this)">
+					Program manager
+				</div>
+				<div class="minimize-button">
+					<div class="minimize-button-content">&#9662;</div>
+				</div>
+				<div class="maximize-button" onclick="switchScreenMode()">
+					<div class="maximize-button-content">&#9652;</div>
+				</div>
+			</div>
+			<div class="menu-bar">
+				<div class="menu-option">File</div>
+				<div class="menu-option">Options</div>
+				<div class="menu-option">Window</div>
+				<div class="menu-option">Help</div>
+			</div>
+			<div class="window-content">
+				<div class="icon-background" onclick="unselectIcon()">
+				</div>
+				<div class="icon" id="icon-msdos" onclick="selectIcon(this)" ondblclick="runApp(msdos)">
+					<img src="img/ms-dos.png"/>
+				</div>
+				<div class="icon" id="icon-notepad" onclick="selectIcon(this)" ondblclick="runApp(notepad)">
+					<img src="img/notepad.png"/>
+				</div>
+			</div>
+		</div><!-- .WINDOW #WINDOW-PROGRAM-MANAGER -->
+
+		<div class="window-with-menu-bar" id="window-notepad" onmousedown="clickOnWindow(this)">
+			<div class="title-bar">
+				<div class="options-button" onclick="closeWindow(parentElement.parentElement)">&ndash;</div>
+				<div class="title"
+					onmousedown="setMouseDown(this, event)"
+					onmouseup="setMouseUp(this)">
+					Notepad
+				</div>
+				<div class="minimize-button">
+					<div class="minimize-button-content">&#9662;</div>
+				</div>
+				<div class="maximize-button">
+					<div class="maximize-button-content">&#9652;</div>
+				</div>
+			</div>
+			<div class="menu-bar">
+				<div class="menu-option" onclick="showMenuList()">
+					File
+					<div class="menu-list">
+						<div class="menu-element">New</div>
+						<div class="menu-element">Save</div>
+						<div class="menu-element">Save as...</div>
+						<hr>
+						<div class="menu-element" onclick="closeWindow(parentElement.parentElement.parentElement.parentElement)">Exit</div>
+					</div>
+				</div>
+				<div class="menu-option">Help</div>
+			</div>
+			<div class="window-content">
+				<textarea></textarea>
+			</div>
+		</div><!-- .WINDOW #WINDOW-NOTEPAD -->
+
+		<div class="window" id="window-msdos" onmousedown="clickOnWindow(this)">
+			<div class="title-bar">
+				<div class="options-button" onclick="closeWindow(parentElement.parentElement)">&ndash;</div>
+				<div class="title"
+					onmousedown="setMouseDown(this, event)"
+					onmouseup="setMouseUp(this)">
+					MS-DOS
+				</div>
+				<div class="minimize-button">
+					<div class="minimize-button-content">&#9662;</div>
+				</div>
+				<div class="maximize-button">
+					<div class="maximize-button-content">&#9652;</div>
+				</div>
+			</div>
+			<div class="window-content">
+				<iframe id="iframe-msdos" src="../webdos/index.html" title="WebDOS"></iframe>
+			</div>
+		</div><!-- .WINDOW #WINDOW-MSDOS -->
+	</div><!-- #DESKTOP -->
+
+	<div id="start-bar">
+		<div id="start-button" onclick="clickStartMenu()">
+			<img src="img/start-menu.png"/>
+			<div class="text">Start</div>
+			<div class="clear"></div>
+		</div>
+		<div id="systray">
+			<img src="img/systray-keyboard.png"/>
+			<img src="img/systray-sound.png"/>
+			<div id="clock">17:16</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+</body>
+</html>
