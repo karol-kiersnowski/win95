@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "Windows Regular";
+ 	src: url("Windows Regular.ttf");
+}
+
 * {
 	box-sizing: border-box;
 	user-select: none;
@@ -7,7 +12,7 @@
 body {
 	margin: 0;
 	overflow: hidden;
-	font-family: Arial, sans-serif;
+	font-family: "Windows Regular", Arial, sans-serif;
 }
 
 
@@ -286,6 +291,9 @@ p {
 
 
 
+
+
+
 #desktop {
 	height: calc(100% - 26px);
 	background-color: #008080;
@@ -307,7 +315,6 @@ p {
 		background-color: #c0c0c0;
 		border-width: 2px;
 		border-style: outset;
-		font-size: 14px;
 	}
 
 	#start-button:active {
@@ -320,8 +327,10 @@ p {
 		}
 
 		#start-button .text {
+			display: block;
 			float: left;
-			padding: 2px;
+			margin-top: -1px;
+			margin-left: 2px;
 			height: 100%;
 		}
 
@@ -364,9 +373,13 @@ p {
 }
 
 	.start-item {
-		padding: 2px;
+		padding: 1px;
 		height: 32px;
-		font-size: 18px;
+		font-size: 20px;
+	}
+
+	.start-item img {
+		display: inline;
 	}
 
 	.start-item:hover,
@@ -389,7 +402,7 @@ p {
 			.programs-item,
 			.accessories-item {
 				height: 24px;
-				font-size: 14px;
+				font-size: 16px;
 			}
 
 				.programs-item #accessories-submenu {
