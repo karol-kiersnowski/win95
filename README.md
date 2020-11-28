@@ -2,7 +2,7 @@ Windows 95 Simulator
 =====================
 Windows 95 - simple simulator in your browser (it's just a toy)
 
-Projects site - [kargol92.github.io/win31](https://kargol92.github.io/win95)
+Projects site - [karol-kiersnowski.github.io/win31](https://karol-kiersnowski.github.io/win95)
 
 Technologies
 ------------
@@ -28,8 +28,8 @@ To do
 
 Author
 ------
-kargol92
+Karol Kiersnowski
 
 License for source code
 -----------------------
-[GNU General Public License v3.0](https://github.com/kargol92/cmd.sh/blob/master/LICENSE)
+[GNU General Public License v3.0](https://github.com/karol-kiersnowski/win95/blob/master/LICENSE)
